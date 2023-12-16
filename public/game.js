@@ -1,3 +1,4 @@
+// Dentro de game.js
 const gameContainer = document.getElementById('game-container');
 const player1 = document.getElementById('player1');
 const player2 = document.getElementById('player2');
@@ -76,5 +77,12 @@ socket.on('updatePosition', ({ player, position }) => {
         player2Position = position;
     }
 
+    updatePlayers();
+});
+
+// Ouvir a posição inicial dos jogadores do servidor
+socket.on('initialPosition', (positions) => {
+    player1Position = positions.player1;
+    player2Position = positions.player2;
     updatePlayers();
 });
